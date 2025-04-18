@@ -3,8 +3,8 @@
     "next/core-web-vitals",
     "next/typescript",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "eslint-config-prettier"
+    "eslint-config-prettier",
+    "plugin:prettier/recommended"
   ],
   "plugins": ["prettier"]
 }
