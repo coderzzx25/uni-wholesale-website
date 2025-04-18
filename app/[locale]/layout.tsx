@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 
 import '../globals.css';
 import { routing } from '@/i18n/routing';
+import ThemeProvider from '../components/ThemeProvider/ThemeProvider';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -35,7 +36,9 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
