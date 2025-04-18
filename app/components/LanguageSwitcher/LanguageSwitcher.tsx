@@ -1,6 +1,7 @@
 // src/components/LanguageSwitcher.tsx
 'use client';
 
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { LOCALE } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
@@ -16,12 +17,17 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <select value={locale} onChange={(e) => switchLanguage(e.target.value)}>
-      {LOCALE.map((lang) => (
-        <option key={lang} value={lang}>
-          {lang.toUpperCase()}
-        </option>
-      ))}
-    </select>
+    <Select defaultValue={locale} onValueChange={(value) => switchLanguage(value)}>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Language" />
+      </SelectTrigger>
+      <SelectContent>
+        {LOCALE.map((lang) => (
+          <SelectItem key={lang} value={lang}>
+            {lang.toUpperCase()}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }
